@@ -1,0 +1,42 @@
+server:
+  port: 8080
+
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/support_tickets
+    username: ${DB_USERNAME:postgres}
+    password: ${DB_PASSWORD:postgres}
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    show-sql: false
+  flyway:
+    enabled: true
+  jackson:
+    property-naming-strategy: SNAKE_CASE
+    default-property-inclusion: NON_NULL
+  ai:
+    openai:
+      api-key: ${OPENAI_API_KEY:test-dummy-key-not-a-real-credential}
+      embedding:
+        options:
+          model: text-embedding-3-small
+      chat:
+        options:
+          model: gpt-4o-mini
+    vectorstore:
+      pgvector:
+        initialize-schema: true
+        dimensions: 1536
+        distance-type: COSINE_DISTANCE
+        index-type: HNSW
+
+rag:
+  retrieval:
+    top-k: 5
+    similarity-threshold: 0.7
+
+logging:
+  level:
+    com.support.tickets: WARN
+    org.springframework.ai: WARN

@@ -1,0 +1,21 @@
+# Node / frontend
+frontend/node_modules/
+frontend/dist/
+
+# Java / backend build output
+backend/build/
+backend/target/
+backend/.gradle/
+backend/out/
+
+# IDE
+.idea/
+*.iml
+.vscode/
+
+# OS
+.DS_Store
+
+# Env / secrets
+.env
+.env.local
